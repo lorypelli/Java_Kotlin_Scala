@@ -29,6 +29,7 @@ public class Main {
         System.out.print("Inserisci la lunghezza del quarto lato del trapezio: ");
         final float trapezium4 = s.nextFloat();
         System.out.printf("Il perimetro del trapezio di lati %.2f, %.2f, %.2f e %.2f è: %.2f\n", trapezium1, trapezium2, trapezium3, trapezium4, new Trapezium(trapezium1, trapezium2, trapezium3, trapezium4).p);
+        s.close();
     }
 }
 
@@ -40,7 +41,6 @@ abstract class PolygonError {
     private static boolean canError = false;
     static boolean checkError(float[] arr) {
         for (float it : arr) {
-            System.out.println(it);
             if (!isValid(it)) {
                 canError = true;
                 break;
@@ -64,15 +64,8 @@ abstract class Polygon {
         this.msg = msg;
     }
     protected float perimeter(float... arr) throws Exception {
-        final boolean err = PolygonError.checkError(arr);
-        if (err) {
-            PolygonError.throwError(msg);
-        }
-        float s = 0f;
-        for (float it : arr) {
-            s += it;
-        }
-        return s;
+        checkError(arr);
+        return sum(arr);
     }
     protected String getErrorMessage() {
         return msg;
@@ -80,9 +73,22 @@ abstract class Polygon {
     protected void setErrorMessage(String m) {
         msg = m;
     }
+    private void checkError(float[] arr) throws Exception {
+        final boolean err = PolygonError.checkError(arr);
+        if (err) {
+            PolygonError.throwError(msg);
+        }
+    }
+    private float sum(float[] arr) {
+        float s = 0f;
+        for (float it : arr) {
+            s += it;
+        }
+        return s;
+    }
 }
 
-class Triangle extends Polygon {
+final class Triangle extends Polygon {
     private final float l1;
     private final float l2;
     private final float l3;
@@ -111,7 +117,7 @@ class Triangle extends Polygon {
     }
 }
 
-class Rectangle extends Polygon {
+final class Rectangle extends Polygon {
     private final float l1;
     private final float l2;
     final float p;
@@ -138,7 +144,7 @@ class Rectangle extends Polygon {
     }
 }
 
-class Square extends Polygon {
+final class Square extends Polygon {
     private final float l;
     final float p;
     Square(float l, final String msg) throws Exception {
@@ -163,7 +169,7 @@ class Square extends Polygon {
     }
 }
 
-class Trapezium extends Polygon {
+final class Trapezium extends Polygon {
     private final float l1;
     private final float l2;
     private final float l3;

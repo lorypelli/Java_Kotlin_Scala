@@ -38,7 +38,6 @@ private abstract class PolygonError private constructor() {
         private var canError = false
         fun checkError(arr: FloatArray): Boolean {
             arr.forEach {
-                println(isValid(it))
                 if (!isValid(it)) {
                     canError = true
                     return@forEach
@@ -57,19 +56,25 @@ private abstract class PolygonError private constructor() {
 
 abstract class Polygon(protected var msg: String) {
     protected fun perimeter(vararg arr: Float): Float {
-        val err = PolygonError.checkError(arr)
-        if (err) {
-            PolygonError.throwError(msg)
-        }
-        var s = 0f
-        arr.forEach { s += it }
-        return s
+        checkError(arr)
+        return sum(arr)
     }
     protected open fun getErrorMessage(): String {
         return msg
     }
     protected open fun setErrorMessage(m: String) {
         msg = m
+    }
+    private fun checkError(arr: FloatArray) {
+        val err = PolygonError.checkError(arr)
+        if (err) {
+            PolygonError.throwError(msg)
+        }
+    }
+    private fun sum(arr: FloatArray): Float {
+        var s = 0f
+        arr.forEach { s += it }
+        return s
     }
 }
 
