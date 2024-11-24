@@ -27,7 +27,7 @@ fun main() {
     print("Il perimetro del trapezio di lati %.2f, %.2f, %.2f e %.2f è: %.2f".format(trapezium1, trapezium2, trapezium3, trapezium4, Trapezium(trapezium1, trapezium2, trapezium3, trapezium4).p))
 }
 
-abstract class Defaults {
+private abstract class Defaults private constructor() {
     companion object {
         const val DEFAULT_MSG = "I lati non possono essere negativi!"
     }

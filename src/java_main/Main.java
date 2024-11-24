@@ -35,10 +35,12 @@ public class Main {
 
 abstract class Defaults {
     static final String DEFAULT_MSG = "I lati non possono essere negativi!";
+    private Defaults() {}
 }
 
 abstract class PolygonError {
     private static boolean canError = false;
+    private PolygonError() {}
     static boolean checkError(float[] arr) {
         for (float it : arr) {
             if (!isValid(it)) {
