@@ -34,7 +34,7 @@ public class Main {
 }
 
 abstract class Defaults {
-    static String DEFAULT_MSG = "I lati non possono essere negativi!";
+    static final String DEFAULT_MSG = "I lati non possono essere negativi!";
 }
 
 abstract class PolygonError {
@@ -121,7 +121,7 @@ final class Rectangle extends Polygon {
     private final float l1;
     private final float l2;
     final float p;
-    Rectangle(float l1, float l2, final String msg) throws Exception {
+    Rectangle(float l1, float l2, String msg) throws Exception {
         super(msg);
         this.l1 = l1;
         this.l2 = l2;
@@ -147,7 +147,7 @@ final class Rectangle extends Polygon {
 final class Square extends Polygon {
     private final float l;
     final float p;
-    Square(float l, final String msg) throws Exception {
+    Square(float l, String msg) throws Exception {
         super(msg);
         this.l = l;
         this.p = perimeter();
