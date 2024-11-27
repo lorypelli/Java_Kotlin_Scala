@@ -24,7 +24,7 @@ fun main() {
     val trapezium3 = readln().toFloat()
     print("Inserisci la lunghezza del quarto lato del trapezio: ")
     val trapezium4 = readln().toFloat()
-    print("Il perimetro del trapezio di lati %.2f, %.2f, %.2f e %.2f è: %.2f".format(trapezium1, trapezium2, trapezium3, trapezium4, Trapezium(trapezium1, trapezium2, trapezium3, trapezium4).p))
+    println("Il perimetro del trapezio di lati %.2f, %.2f, %.2f e %.2f è: %.2f".format(trapezium1, trapezium2, trapezium3, trapezium4, Trapezium(trapezium1, trapezium2, trapezium3, trapezium4).p))
 }
 
 private abstract class Defaults private constructor() {
@@ -79,31 +79,31 @@ abstract class Polygon(protected var msg: String) {
 class Triangle(private val l1: Float, private val l2: Float, private val l3: Float, msg: String = Defaults.DEFAULT_MSG): Polygon(msg) {
     val p = perimeter()
     private fun perimeter() = super.perimeter(l1, l2, l3)
-    override fun toString() = "Triangle(%.2f, %.2f, %.2f, %s)".format(l1, l2, l3, msg)
-    override fun getErrorMessage() = this.toString() + super.getErrorMessage()
-    override fun setErrorMessage(m: String) = super.setErrorMessage(this.toString() + m)
+    override fun toString() = "Triangle(%.2f, %.2f, %.2f)".format(l1, l2, l3)
+    override fun getErrorMessage() = "$this: ${super.getErrorMessage()}"
+    override fun setErrorMessage(m: String) = super.setErrorMessage("$this: $m")
 }
 
 class Rectangle(private val l1: Float, private val l2: Float, msg: String = Defaults.DEFAULT_MSG): Polygon(msg) {
     val p = perimeter()
     private fun perimeter() = super.perimeter(l1 * 2, l2 * 2)
-    override fun toString() = "Rectangle(%.2f, %.2f, %s)".format(l1, l2, msg)
-    override fun getErrorMessage() = this.toString() + super.getErrorMessage()
-    override fun setErrorMessage(m: String) = super.setErrorMessage(this.toString() + m)
+    override fun toString() = "Rectangle(%.2f, %.2f)".format(l1, l2)
+    override fun getErrorMessage() = "$this: ${super.getErrorMessage()}"
+    override fun setErrorMessage(m: String) = super.setErrorMessage("$this: $m")
 }
 
 class Square(private val l: Float, msg: String = Defaults.DEFAULT_MSG): Polygon(msg) {
     val p = perimeter()
     private fun perimeter() = super.perimeter(l * 4)
-    override fun toString() = "Square(%.2f, %s)".format(l, msg)
-    override fun getErrorMessage() = this.toString() + super.getErrorMessage()
-    override fun setErrorMessage(m: String) = super.setErrorMessage(this.toString() + m)
+    override fun toString() = "Square(%.2f)".format(l)
+    override fun getErrorMessage() = "$this: ${super.getErrorMessage()}"
+    override fun setErrorMessage(m: String) = super.setErrorMessage("$this: $m")
 }
 
 class Trapezium(private val l1: Float, private val l2: Float, private val l3: Float, private val l4: Float, msg: String = Defaults.DEFAULT_MSG): Polygon(msg) {
     val p = perimeter()
     private fun perimeter() = super.perimeter(l1, l2, l3, l4)
-    override fun toString() = "Trapezium(%.2f, %.2f, %2.f, %.2f, %s)".format(l1, l2, l3, l4, msg)
-    override fun getErrorMessage() = this.toString() + super.getErrorMessage()
-    override fun setErrorMessage(m: String) = super.setErrorMessage(this.toString() + m)
+    override fun toString() = "Trapezium(%.2f, %.2f, %2.f, %.2f)".format(l1, l2, l3, l4)
+    override fun getErrorMessage() = "$this: ${super.getErrorMessage()}"
+    override fun setErrorMessage(m: String) = super.setErrorMessage("$this: $m")
 }

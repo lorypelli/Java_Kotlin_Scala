@@ -109,13 +109,13 @@ final class Triangle extends Polygon {
         return super.perimeter(l1, l2, l3);
     }
     public String toString() {
-        return String.format("Triangle(%.2f, %.2f, %.2f, %s)", l1, l2, l3, msg);
+        return String.format("Triangle(%.2f, %.2f, %.2f)", l1, l2, l3);
     }
     protected String getErrorMessage() {
-        return this + super.getErrorMessage();
+        return this + ": " + super.getErrorMessage();
     }
     protected void setErrorMessage(String m) {
-        super.setErrorMessage(this + m);
+        super.setErrorMessage(this + ": " + m);
     }
 }
 
@@ -136,13 +136,13 @@ final class Rectangle extends Polygon {
         return super.perimeter(l1 * 2, l2 * 2);
     }
     public String toString() {
-        return String.format("Rectangle(%.2f, %.2f, %s)", l1, l2, msg);
+        return String.format("Rectangle(%.2f, %.2f)", l1, l2);
     }
     protected String getErrorMessage() {
-        return this + super.getErrorMessage();
+        return this + ": " + super.getErrorMessage();
     }
     protected void setErrorMessage(String m) {
-        super.setErrorMessage(this + m);
+        super.setErrorMessage(this + ": " + m);
     }
 }
 
@@ -161,13 +161,13 @@ final class Square extends Polygon {
         return super.perimeter(l * 4);
     }
     public String toString() {
-        return String.format("Square(%.2f, %s)", l, msg);
+        return String.format("Square(%.2f)", l);
     }
     protected String getErrorMessage() {
-        return this + super.getErrorMessage();
+        return this + ": " + super.getErrorMessage();
     }
     protected void setErrorMessage(String m) {
-        super.setErrorMessage(this + m);
+        super.setErrorMessage(this + ": " + m);
     }
 }
 
@@ -192,12 +192,12 @@ final class Trapezium extends Polygon {
         return super.perimeter(l1, l2, l3, l4);
     }
     public String toString() {
-        return String.format("Trapezium(%.2f, %.2f, %.2f, %.2f, %s)", l1, l2, l3, l4, msg);
+        return String.format("Trapezium(%.2f, %.2f, %.2f, %.2f)", l1, l2, l3, l4);
     }
     protected String getErrorMessage() {
-        return this + super.getErrorMessage();
+        return this + ": " + super.getErrorMessage();
     }
     protected void setErrorMessage(String m) {
-        super.setErrorMessage(this + m);
+        super.setErrorMessage(this + ": " + m);
     }
 }
