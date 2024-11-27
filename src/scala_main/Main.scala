@@ -48,7 +48,7 @@ private object PolygonError {
     private def isValid(e: Float) = e > 0f
 }
 
-abstract class Polygon(protected var msg: String) {
+abstract class Polygon(private var msg: String) {
     protected def perimeter(arr: Float*): Float = {
         checkError(arr)
         sum(arr)

@@ -61,7 +61,7 @@ abstract class PolygonError {
 }
 
 abstract class Polygon {
-    protected String msg;
+    private String msg;
     Polygon(String msg) {
         this.msg = msg;
     }

@@ -54,7 +54,7 @@ private abstract class PolygonError private constructor() {
     }
 }
 
-abstract class Polygon(protected var msg: String) {
+abstract class Polygon(private var msg: String) {
     protected fun perimeter(vararg arr: Float): Float {
         checkError(arr)
         return sum(arr)
